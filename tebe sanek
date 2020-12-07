@@ -1,0 +1,67 @@
+using System;
+
+namespace ConsoleApp2
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string s = Console.ReadLine();
+			Console.WriteLine( Convert.ToString(chislo(s)));
+		}
+		static float chislo(string s)
+		{
+			float chislo = 0;
+			int j = 0;
+			char c = ',';
+			char d = '.';
+			string a = "";
+			string b = "";
+			foreach (char i in s)
+			{	
+				if (i == c | i == d)
+				{
+					j += 1;
+				}
+				if (j == 0)
+				{
+					a =a+ i;
+				}
+				if (j == 1)
+				{
+					b = b + 1;
+				}
+
+			}
+			c = '1';
+			int x = a.Length;
+			int y = b.Length;
+			foreach (char i in a)
+			{
+				if (i == c) 
+				{
+					chislo = (float)(chislo + Math.Pow(2, x - 1));
+					x -= 1;
+				}
+				else
+				{
+					x -= 1;
+				}
+			}
+			foreach (char i in b)
+			{
+				if (i == c)
+				{
+					chislo = (float)(chislo + 1/Math.Pow(2, b.Length - y + 1));
+					y -= 1;
+				}
+				else
+				{
+					y -= 1;
+				}
+			}
+			return chislo;
+		}
+
+	}
+}
